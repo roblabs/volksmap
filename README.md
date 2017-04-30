@@ -6,6 +6,14 @@ The goal of Volksmap is to allow people to easily add their own CSV data to a ma
 Friction, pitfalls and consternation have been minimized, allowing more people to maintain and edit more maps.  
 We built a tiny map based CMS; a **C**ontent **M**ap **S**ystem that anyone can edit and host.
 
+This example shows editing CSV data and launching from a local HTML file.  Then hovering over points of interest shows a basic Popup with HTML.
+
+-----
+
+![Volksmap.gif](Volksmap.gif)
+
+-----
+
 Mapbox has an example on [Loading markers from CSV](https://www.mapbox.com/mapbox.js/example/v1.0.0/markers-from-csv/).  The example uses [Mapbox.js](https://www.mapbox.com/mapbox.js/) and [Leaflet](http://leafletjs.com/)'s [Omnivore](https://github.com/mapbox/leaflet-omnivore) to parse a CSV file.
 
 And we ported that over to [Mapbox GL JS](https://www.mapbox.com/mapbox-gl-js/api).
