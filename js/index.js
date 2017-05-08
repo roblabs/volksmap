@@ -8,6 +8,11 @@ var retVal = csv2GeoJSON.csv2geojson(csvString, function(err, data) {
 // New Mapbox map
 var map = new mapboxgl.Map( style );
 
+// Add controls
+map.addControl(new mapboxgl.FullscreenControl());
+map.addControl(new mapboxgl.NavigationControl());
+
+
 // Create a popup, but don't add it to the map yet.
 var popup = new mapboxgl.Popup({
   closeButton: false
@@ -25,23 +30,7 @@ map.on("load", function() {
               "data": points
           },
           "layout": {
-              "text-size": {
-                  "base": 1,
-                  "stops": [
-                      [
-                          12,
-                          11.5
-                      ],
-                      [
-                          14,
-                          16
-                      ],
-                      [
-                          15,
-                          0
-                      ]
-                  ]
-              },
+              "text-size": textSize,
               "icon-image": "{icon}-15",
               "text-field": "{iata} + {title}",
               "text-font": ["Open Sans Semibold", "Arial Unicode MS Bold"],
@@ -65,6 +54,7 @@ map.on("load", function() {
 
     // Remove things if no feature was found.
     if (!features.length) {
+      popup.remove();
       return;
     }
 
@@ -100,7 +90,7 @@ map.on("load", function() {
     var html = setHTML(feature);
 
     new mapboxgl.Popup()
-                .setLngLat(feature.geometry.coordinates)
+                .setLngLat(e.lngLat)
                 .setHTML(html)
                 .addTo(map);
   });

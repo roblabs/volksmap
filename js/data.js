@@ -13,6 +13,20 @@ var style = {
   zoom: 3
 };
 
+var textSize = {
+    "base": 1,
+    "stops": [
+        [
+            7,
+            11.5
+        ],
+        [
+            14,
+            16
+        ]
+    ]
+};
+
 /*
  * Create full HTML for 'mousever' and 'click' events
  */
