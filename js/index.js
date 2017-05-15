@@ -14,7 +14,11 @@ map.addControl(new mapboxgl.NavigationControl());
 
 
 // Create a popup, but don't add it to the map yet.
-var popup = new mapboxgl.Popup({
+var popupMouseClick = new mapboxgl.Popup({
+  closeButton: false
+});
+
+var popupMouseMove = new mapboxgl.Popup({
   closeButton: false
 });
 
@@ -52,11 +56,20 @@ map.on("load", function() {
     // Change the cursor style as a UI indicator.
     map.getCanvas().style.cursor = features.length ? "pointer" : "";
 
-    // Remove things if no feature was found.
-    if (!features.length) {
-      popup.remove();
+
+    // if Popup is open, meaning it has been clicked, then exit
+    if(popupMouseClick.isOpen()){
       return;
     }
+
+    // Remove things if no feature was found.
+    if (!features.length) {
+      popupMouseMove.remove();
+      return;
+    }
+
+    // clear existing
+    popupMouseMove.remove();
 
     // Single out the first found feature on mouseove.
     var feature = features[0];
@@ -65,7 +78,8 @@ map.on("load", function() {
     // based on the feature found.
     var html = setHTML(feature);
 
-    popup.setLngLat(e.lngLat)
+    popupMouseMove
+      .setLngLat(e.lngLat)
       .setHTML(html)
       .addTo(map);
   };
@@ -89,7 +103,7 @@ map.on("load", function() {
 
     var html = setHTML(feature);
 
-    new mapboxgl.Popup()
+    popupMouseClick = new mapboxgl.Popup()
                 .setLngLat(e.lngLat)
                 .setHTML(html)
                 .addTo(map);
