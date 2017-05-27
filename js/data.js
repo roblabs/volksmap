@@ -5,12 +5,22 @@
 // Full documentation can be found at
 // https://www.mapbox.com/mapbox-gl-js/style-spec/
 var style = {
-  container: "map",
-  style: "mapbox://styles/mapbox/streets-v10",
-  center: [-115.973, 33.273],
-  minZoom: 2,
-  maxZoom: 8,
-  zoom: 3
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v10',
+    zoom:  5.0, 
+    center: [-100.376546, 40.175968],
+    minZoom: 0,
+    maxZoom: 15
+};
+
+var smallMapStyle = {
+    container: "mapsmall",
+    style: "mapbox://styles/mapbox/streets-v10",
+    zoom: 2,
+    center: [-120.867069, 42.931101],
+    minZoom: 0,
+    maxZoom: 4,
+    attributionControl: false
 };
 
 var textSize = {
