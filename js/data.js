@@ -1,13 +1,11 @@
 // Set your data here
 
-// mapboxgl.accessToken = "";
-
 // Full documentation can be found at
 // https://www.mapbox.com/mapbox-gl-js/style-spec/
 var style = {
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
-    zoom:  5.0, 
+    zoom:  5.0,
     center: [-100.376546, 40.175968],
     minZoom: 0,
     maxZoom: 15
