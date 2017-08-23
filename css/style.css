@@ -19,4 +19,15 @@
               margin-top:10px;
               border:10px solid gray;
             }
+
+          @media only screen and (min-width: 1200px) {
+              #mapsmall {
+                width:40%;
+              }
+
+          @media only screen and (min-height: 1200px) {
+              #mapsmall {
+                height:40%;
+              }
+
         }
