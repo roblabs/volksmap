@@ -1,8 +1,16 @@
 // Parse CSV from a multi-line Javascript object
 var points = "";
 var csv2GeoJSON = require("csv2geojson");
-var retVal = csv2GeoJSON.csv2geojson(csvString, function(err, data) {
-    points = data;
+
+$.get('/data/airports.csv',function(data){
+
+  console.log(data);
+
+  var retVal = csv2GeoJSON.csv2geojson(data, function(err, data) {
+      points = data;
+      console.log(points);
+  });
+
 });
 
 //
