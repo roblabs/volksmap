@@ -2,7 +2,7 @@
 var points = "";
 var csv2GeoJSON = require("csv2geojson");
 
-$.get('/data/airports.csv',function(data){
+$.get('data.csv',function(data){
 
   console.log(data);
 
@@ -12,11 +12,6 @@ $.get('/data/airports.csv',function(data){
   });
 
 });
-
-//
-// Small inset map
-//
-var mapsmall = new mapboxgl.Map( smallMapStyle );
 
 // New Mapbox map
 var map = new mapboxgl.Map( style );
@@ -35,29 +30,9 @@ var popupMouseMove = new mapboxgl.Popup({
   closeButton: false
 });
 
-mapsmall.on("load", function() {
-  mapsmall.addLayer({
-          "id": "points",
-          "type": "symbol",
-          "source": {
-              "type": "geojson",
-              "data": points
-          },
-          "layout": {
-              "text-size": textSize,
-              "icon-image": "{icon}-15",
-              "text-field": textField,
-              "text-offset": [0, 0.6],
-              "text-anchor": "top"
-          },
-          "paint": {
-              "text-halo-color": "hsl(0, 0%, 100%)",
-              "text-halo-width": 1.25
-          }
-      });
-});
 
 map.on("load", function() {
+
   map.addLayer({
           "id": "points",
           "type": "symbol",
@@ -66,8 +41,9 @@ map.on("load", function() {
               "data": points
           },
           "layout": {
-              "text-size": textSize,
-              "icon-image": "{icon}-15",
+              "text-font": ["Open Sans Italic"],
+              "text-size": 18,
+              "icon-image": "{icon}",
               "text-field": textField,
               "text-offset": [0, 0.6],
               "text-anchor": "top"
@@ -143,10 +119,6 @@ map.on("load", function() {
 
   map.on('moveend', function(){
     ZoomOrDragEnd(map);
-  });
-
-  mapsmall.on('moveend', function(){
-    ZoomOrDragEnd(mapsmall);
   });
 
   function ZoomOrDragEnd(mapDiv){
