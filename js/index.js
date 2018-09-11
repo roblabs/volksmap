@@ -44,6 +44,7 @@ map.on("load", function() {
               "text-font": ["Open Sans Italic"],
               "text-size": 18,
               "icon-image": "{icon}",
+              "icon-size": 1,
               "text-field": textField,
               "text-offset": [0, 0.6],
               "text-anchor": "top"
